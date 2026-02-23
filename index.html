@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Stock Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📈 Taiwan Stock Tracker</h1>
+                <p class="subtitle">Real-time Taiwan Stock Exchange Data</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search by stock code (2330) or name (TSMC)..."
+                        class="search-input"
+                    >
+                    <button id="searchBtn" class="search-btn">Search</button>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </section>
+
+            <!-- Stock Info Section -->
+            <section class="info-section" id="infoSection" style="display: none;">
+                <div class="stock-info">
+                    <div class="info-header">
+                        <div>
+                            <h2 id="stockName"></h2>
+                            <p id="stockCode" class="code"></p>
+                        </div>
+                        <div class="price-info">
+                            <div class="current-price" id="currentPrice">-</div>
+                            <div class="price-change" id="priceChange">-</div>
+                        </div>
+                    </div>
+                    <div class="info-details">
+                        <div class="detail-item">
+                            <span class="label">Volume</span>
+                            <span id="volume" class="value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">High</span>
+                            <span id="high" class="value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Low</span>
+                            <span id="low" class="value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Open</span>
+                            <span id="open" class="value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Time Period Selector -->
+            <section class="period-section" id="periodSection" style="display: none;">
+                <div class="period-buttons">
+                    <button class="period-btn active" data-period="1d">Day</button>
+                    <button class="period-btn" data-period="1m">Month</button>
+                    <button class="period-btn" data-period="1y">Year</button>
+                    <button class="period-btn" data-period="5y">5 Year</button>
+                </div>
+            </section>
+
+            <!-- Chart Section -->
+            <section class="chart-section" id="chartSection" style="display: none;">
+                <div class="chart-container">
+                    <canvas id="stockChart"></canvas>
+                </div>
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <section id="errorSection" class="error-section" style="display: none;">
+                <div class="error-message" id="errorMessage"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
